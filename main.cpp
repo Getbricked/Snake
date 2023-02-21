@@ -27,12 +27,15 @@ int main()
         if(Keyboard::isKeyPressed(Keyboard::Up)) direction =  3;
         if(Keyboard::isKeyPressed(Keyboard::Right)) direction = 0;
         if(Keyboard::isKeyPressed(Keyboard::Down)) direction =  1;
+
         m.CreateMap(w, l, s);
         S.draw();
         S.movement(direction);
         S.eatfood();
         S.speedup(point);
+
         window.display();
+        
         if(GameOver) window.close();
         if(Keyboard::isKeyPressed(Keyboard::Escape)) window.close();
     }

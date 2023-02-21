@@ -13,7 +13,6 @@ Snake::Snake(){
     A[2].x = w/2 + 1; A[2].y = l/2;
 }
 
-
 void Snake::movement(int direction){
     for(int i = snake_size - 1; i > 0; i--)
         A[i] = A[i-1];
