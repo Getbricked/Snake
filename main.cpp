@@ -12,6 +12,7 @@ int main()
     Snake S;
     int direction = 0;
     CreateFood();
+    bool check = true;
     while (window.isOpen()){
 
         Event event;
@@ -27,17 +28,26 @@ int main()
         if(Keyboard::isKeyPressed(Keyboard::Up)) direction =  3;
         if(Keyboard::isKeyPressed(Keyboard::Right)) direction = 0;
         if(Keyboard::isKeyPressed(Keyboard::Down)) direction =  1;
-
+        
         m.CreateMap(w, l, s);
         S.draw();
-        S.movement(direction);
-        S.eatfood();
-        S.speedup(point);
+        
+        if(check){
+            S.movement(direction);
+            S.eatfood();
+            S.speedup(point);   
+        }
 
         window.display();
         
         if(GameOver) window.close();
         if(Keyboard::isKeyPressed(Keyboard::Escape)) window.close();
+        if(Keyboard::isKeyPressed(Keyboard::Space)){
+            if(check)
+                check = false;
+            else
+                check = true;
+        }
     }
     return 0;
 }
