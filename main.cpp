@@ -13,6 +13,8 @@ int main()
     int direction = 0;
     CreateFood();
     bool check = true;
+
+    // This loop to open the window
     while (window.isOpen()){
 
         Event event;
@@ -24,34 +26,40 @@ int main()
         
         window.clear();
 
+        // Keyboard input to change direction
         if(Keyboard::isKeyPressed(Keyboard::Left)) direction = 2;
         if(Keyboard::isKeyPressed(Keyboard::Up)) direction =  3;
         if(Keyboard::isKeyPressed(Keyboard::Right)) direction = 0;
         if(Keyboard::isKeyPressed(Keyboard::Down)) direction =  1;
         
+        // Create the map and draw the snake
         m.CreateMap(w, l, s);
         S.draw();
 
-        if(check){
-            S.movement(direction);
-            S.eatfood();
-            S.speedup(point);   
-        }
 
-        window.display();
-        
-        if(GameOver) 
-            window.close();
-            
-        if(Keyboard::isKeyPressed(Keyboard::Escape)) 
-            window.close();
-
+        // Using space as pause key!
         if(Keyboard::isKeyPressed(Keyboard::Space)){
             if(check)
                 check = false;
             else
                 check = true;
         }
+        if(check){
+            //Snake's movement and eating food
+            S.movement(direction);
+            S.eatfood();
+            S.speedup(point);   
+        }
+
+        // Display the window
+        window.display();
+        
+        // Auto close the game if gameover or pressing esc
+        if(GameOver) 
+            window.close();   
+        if(Keyboard::isKeyPressed(Keyboard::Escape)) 
+            window.close();
+
     }
     return 0;
 }
