@@ -31,7 +31,7 @@ int main()
         
         m.CreateMap(w, l, s);
         S.draw();
-        
+
         if(check){
             S.movement(direction);
             S.eatfood();
@@ -40,8 +40,12 @@ int main()
 
         window.display();
         
-        if(GameOver) window.close();
-        if(Keyboard::isKeyPressed(Keyboard::Escape)) window.close();
+        if(GameOver) 
+            window.close();
+            
+        if(Keyboard::isKeyPressed(Keyboard::Escape)) 
+            window.close();
+
         if(Keyboard::isKeyPressed(Keyboard::Space)){
             if(check)
                 check = false;
